@@ -1,0 +1,197 @@
+/* Variáveis de cores para alto contraste e acessibilidade */
+:root {
+    --cor-fundo: #f4f7f6;
+    --cor-texto: #1a1a1a;
+    --cor-primaria: #004d40; /* Verde escuro para boa legibilidade */
+    --cor-secundaria: #e0f2f1;
+    --cor-alerta: #b71c1c; /* Vermelho escuro para alertas */
+    --cor-fundo-alerta: #ffebee;
+    --cor-botao: #00695c;
+    --cor-botao-hover: #004d40;
+    --cor-foco: #ff9100;
+}
+
+/* Reset e configurações básicas */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
+    font-size: 110%; /* Aumenta a base da fonte para idosos */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    padding-bottom: 80px;
+}
+
+/* Estilos de Foco para Acessibilidade (Navegação por teclado) */
+a:focus, button:focus, input:focus {
+    outline: 4px solid var(--cor-foco);
+    outline-offset: 4px;
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--cor-primaria);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+/* Container principal */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Navegação (Menu Principal) */
+nav {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+nav h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--cor-primaria);
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 600px) {
+    nav ul {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+nav a:hover, nav a:active {
+    background-color: var(--cor-primaria);
+    color: white;
+    border-color: var(--cor-primaria);
+}
+
+/* Cartões de Conteúdo (Dicas) */
+article {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    border-left: 8px solid var(--cor-primaria);
+}
+
+article.alerta {
+    border-left-color: var(--cor-alerta);
+}
+
+article h2 {
+    color: var(--cor-primaria);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+article.alerta h2 {
+    color: var(--cor-alerta);
+}
+
+article p {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+article ul {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+article li {
+    margin-bottom: 0.5rem;
+}
+
+/* Caixa de destaque */
+.destaque {
+    background-color: var(--cor-fundo-alerta);
+    border: 2px solid var(--cor-alerta);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    color: var(--cor-alerta);
+    font-weight: bold;
+}
+
+/* Botão de Voltar ao Topo */
+.voltar-topo {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background-color: #e0e0e0;
+    color: #333;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.voltar-topo:hover {
+    background-color: #ccc;
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+}
+
+footer p {
+    font-size: 1.2rem;
+}
