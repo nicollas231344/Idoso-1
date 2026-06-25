@@ -1,85 +1,262 @@
-/* ==========================================
-   NOVO: ESTILOS DO MODAL DE ACESSIBILIDADE 
-   ========================================== */
+/* Variáveis de cores para alto contraste e acessibilidade */
+:root {
+    --cor-fundo: #f4f7f6;
+    --cor-texto: #1a1a1a;
+    --cor-primaria: #004d40; /* Verde escuro para boa legibilidade */
+    --cor-secundaria: #e0f2f1;
+    --cor-alerta: #b71c1c; /* Vermelho escuro para alertas */
+    --cor-fundo-alerta: #ffebee;
+    --cor-botao: #00695c;
+    --cor-botao-hover: #004d40;
+    --cor-foco: #ff9100;
+    --cor-superficie: #ffffff; /* CORREÇÃO: Fundo dos cartões e menus em modo normal */
+    --tamanho-base: 18px; /* Tamanho de letra inicial confortável */
+}
 
-/* Fundo escurecido que cobre todo o ecrã */
-.modal-back {
-    display: none; /* Escondido por padrão */
-    position: fixed;
-    z-index: 1000; /* Fica acima de tudo */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente escuro */
+/* Classe de Alto Contraste (ativada via JavaScript no body) */
+body.alto-contraste {
+    --cor-fundo: #121212;
+    --cor-texto: #ffffff;
+    --cor-primaria: #80cbc4;
+    --cor-secundaria: #004d40;
+    --cor-alerta: #ff8a80;
+    --cor-fundo-alerta: #2c0d0e;
+    --cor-superficie: #1e1e1e; /* CORREÇÃO: Cartões escuros no alto contraste */
+}
+
+/* Reset e configurações básicas */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
+    /* CORREÇÃO: Vincula a fonte base ao HTML para permitir o redimensionamento por inteiro */
+    font-size: var(--tamanho-base);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    padding-bottom: 80px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilos de Foco para Acessibilidade (Navegação por teclado) */
+a:focus, button:focus, input:focus {
+    outline: 4px solid var(--cor-foco);
+    outline-offset: 4px;
+}
+
+/* Barra de Acessibilidade Superior */
+.barra-acessibilidade {
+    background-color: #263238;
+    color: white;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.barra-acessibilidade span {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.botoes-acessibilidade {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-acessivel {
+    background-color: #37474f;
+    color: white;
+    border: 2px solid white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-acessivel:hover {
+    background-color: white;
+    color: #263238;
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--cor-primaria);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.3rem;
+}
+
+/* Container principal */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Navegação (Menu Principal) */
+nav {
+    background-color: var(--cor-superficie); /* CORREÇÃO: Usa a variável de cor adaptável */
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+}
+
+body.alto-contraste nav {
+    border-color: #444;
+}
+
+nav h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--cor-primaria);
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 600px) {
+    nav ul {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+nav a {
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-}
-
-/* Classe ativada por JavaScript para exibir o modal */
-.modal-back.ativo {
-    display: flex;
-}
-
-/* Caixa branca/escura que contém o texto */
-.modal-conteudo {
-    background-color: var(--cor-superficie);
-    color: var(--cor-texto);
-    padding: 2.5rem;
-    border-radius: 16px;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    border: 4px solid var(--cor-primaria);
-    animation: abrirSuave 0.3s ease-out; /* Efeito de zoom suave */
-}
-
-.modal-conteudo h2 {
+    background-color: var(--cor-secundaria);
     color: var(--cor-primaria);
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
+    text-decoration: none;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
     text-align: center;
+    border: 3px solid var(--cor-primaria);
+    transition: all 0.3s ease;
 }
 
-.modal-conteudo p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+nav a:hover, nav a:active {
+    background-color: var(--cor-primaria);
+    color: var(--cor-superficie);
 }
 
-.modal-conteudo ul {
-    margin-left: 2rem;
+/* Cartões de Conteúdo (Dicas) */
+article {
+    background-color: var(--cor-superficie); /* CORREÇÃO: Usa a variável de cor adaptável */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    border-left: 10px solid var(--cor-primaria);
+}
+
+body.alto-contraste article {
+    border-color: #444;
+    border-left-color: var(--cor-primaria);
+}
+
+article.alerta {
+    border-left-color: var(--cor-alerta);
+}
+
+article h2 {
+    color: var(--cor-primaria);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+article.alerta h2 {
+    color: var(--cor-alerta);
+}
+
+article p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+article ul {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
     font-size: 1.2rem;
 }
 
-.modal-conteudo li {
+article li {
     margin-bottom: 0.8rem;
 }
 
-/* Botão grande e chamativo para fechar */
-.btn-fechar-modal {
-    display: block;
-    width: 100%;
+/* Caixa de destaque */
+.destaque {
+    background-color: var(--cor-fundo-alerta);
+    border: 2px solid var(--cor-alerta);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    color: var(--cor-alerta);
+    font-weight: bold;
+}
+
+/* Botão de Voltar ao Topo */
+.voltar-topo {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 2px solid var(--cor-primaria);
+}
+
+.voltar-topo:hover {
     background-color: var(--cor-primaria);
     color: var(--cor-superficie);
-    border: none;
-    padding: 1.2rem;
-    font-size: 1.3rem;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    border: 2px solid transparent;
 }
 
-.btn-fechar-modal:hover, .btn-fechar-modal:focus {
-    background-color: var(--cor-botao-hover);
-    border-color: var(--cor-foco);
+/* Rodapé */
+footer {
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: 2rem;
 }
 
-/* Animação de zoom para o modal aparecer de forma agradável */
-@keyframes abrirSuave {
-    from { transform: scale(0.85); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+footer p {
+    font-size: 1.1rem;
 }
