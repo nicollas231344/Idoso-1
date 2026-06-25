@@ -11,6 +11,7 @@
     <div class="barra-acessibilidade" aria-label="Ferramentas de Acessibilidade">
         <span>⚙️ FERRAMENTAS DE ACESSIBILIDADE:</span>
         <div class="botoes-acessibilidade">
+            <button class="btn-acessivel" onclick="abrirModal()" aria-label="Abrir instruções de ajuda">📖 Como Usar</button>
             <button class="btn-acessivel" onclick="alterarFonte(-2)" aria-label="Diminuir tamanho do texto">A-</button>
             <button class="btn-acessivel" onclick="alterarFonte(2)" aria-label="Aumentar tamanho do texto">A+</button>
             <button class="btn-acessivel" onclick="alternarContraste()" aria-label="Alternar modo de alto contraste">🌓 Alto Contraste</button>
@@ -82,13 +83,25 @@
             </ul>
             <a href="#topo" class="voltar-topo">↑ Voltar ao menu principal</a>
         </article>
-
     </main>
 
     <footer>
         <p>A internet é um lugar fantástico, explore-a com segurança! ❤️</p>
         <p style="font-size: 1rem; margin-top: 10px; color: #aaa;">Aplicativo de utilidade pública totalmente acessível.</p>
     </footer>
+
+    <div id="meuModal" class="modal-back" aria-hidden="true" role="dialog" aria-labelledby="modalTitulo">
+        <div class="modal-conteudo">
+            <h2 id="modalTitulo">👋 Bem-vindo ao Guia Seguro!</h2>
+            <p>Este site foi feito para o ajudar a navegar na internet sem medos. Veja como pode ajustar a página para ler melhor:</p>
+            <ul>
+                <li>Use os botões <strong>A+</strong> e <strong>A-</strong> no topo do ecrã para aumentar ou diminuir o tamanho das letras.</li>
+                <li>Clique em <strong>🌓 Alto Contraste</strong> se preferir ler com o fundo escuro.</li>
+                <li>Clique nos botões do menu azul para ir direto a qualquer tema.</li>
+            </ul>
+            <button class="btn-fechar-modal" onclick="fecharModal()" aria-label="Fechar janela de instruções">Entendido, quero ler o guia!</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
